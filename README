@@ -1,0 +1,28 @@
+## Snake Game based on FPGA.
+
+
+NOTE：
+该工程目前基本实现了贪吃蛇的相关功能，但在仍存在以下问题：
+    1. 方向按键检测：存在按一次触发两次的情况。
+    2. 重置功能异常：重置时存在蛇位置更新问题，需要多次按下或者长时间按下来触发蛇的位置修正。
+
+DESCRIPTION：
+该项目基于Xilinx FPGA， 使用vivado作为开发平台。
+整个项目的代码结构如下：
+    HDMI_Output_Top                         顶层模块
+        - CLK_PLL                           时钟分频
+        - VGA_NAKE                          贪吃蛇核心代码
+            --- vga_snake
+                --- UPDATE_CLK              时钟分频
+                --- SYNC_GEN                VGA时序生成
+                --- GAME_KEY_DETECT         按键检测
+                --- GAME_CONTROLLER         游戏控制器 - 更新处理苹果蛇的状态并输出
+                    --- WALL_DETECT         墙体检测
+                    --- APPLE_CONTROLLER    苹果控制器 - 苹果状态更新
+                    --- SNAKE_CONTROLLER    蛇控制器   - 蛇状态更新
+                    --- SNAKE_COLLISION     蛇碰撞处理 - 蛇的碰撞更新
+                --- VGA_DISPLAY             画面显示控制
+        - RGB2DVI       VGA -> HDMI
+    
+
+其中，VGA_SNAKE和RGB2DVI为导入IP，CLK_PLL为自带IP。
