@@ -1,0 +1,9 @@
+.Xil/
+pl_hdmi_out.cache
+pl_hdmi_out.hw
+pl_hdmi_out.runs
+pl_hdmi_out.sim
+sim_scripts
+*.xpr
+*.jou
+*.log
